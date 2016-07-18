@@ -52,6 +52,13 @@
 			<artifactId>powermock-api-mockito</artifactId>
 			<version>1.6.5</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-easymock -->
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-easymock</artifactId>
+			<version>1.6.5</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<pluginManagement>

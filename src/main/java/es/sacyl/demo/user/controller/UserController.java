@@ -3,6 +3,9 @@
  */
 package es.sacyl.demo.user.controller;
 
+import java.util.UUID;
+
+import es.sacyl.demo.user.domain.User;
 import es.sacyl.demo.user.service.interfaces.UserService;
 
 /**
@@ -21,11 +24,24 @@ public class UserController {
 		this.userService = userService;
 	}
 
+	public UserController() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * 
 	 * @return Long
 	 */
 	public Long getUserCount() {
 		return userService.getUserCount();
+	}
+
+	/**
+	 * 
+	 * @param user
+	 * @return String
+	 */
+	public String createUserId(User user) {
+		return String.format("%s_%s", user.getSurname(), UUID.randomUUID().toString());
 	}
 }
