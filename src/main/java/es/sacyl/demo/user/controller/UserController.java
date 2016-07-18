@@ -44,4 +44,21 @@ public class UserController {
 	public String createUserId(User user) {
 		return String.format("%s_%s", user.getSurname(), UUID.randomUUID().toString());
 	}
+
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public String getGreetingText(User user) {
+		return String.format(getGreetingFormat(), user.getFirstName(), user.getSurname());
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private String getGreetingFormat() {
+		return "Hello %s %s";
+	}
 }

@@ -4,6 +4,9 @@
 package es.sacyl.unit.demo.user.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.powermock.api.mockito.PowerMockito.spy;
+import static org.powermock.api.mockito.PowerMockito.when;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
 import java.util.UUID;
 
@@ -54,5 +57,15 @@ public class UserControllerTest {
 		user.setFirstName("Code");
 		user.setSurname("Geeks");
 		return user;
+	}
+
+	@Test
+	public void testMockPrivateMethod() throws Exception {
+		UserController spy = spy(new UserController());
+		when(spy, method(UserController.class, "getGreetingFormat")).withNoArguments().thenReturn("Good Morning %s %s");
+		User user = new User();
+		user.setFirstName("Code");
+		user.setSurname("Geeks");
+		assertEquals("Good Morning Code Geeks", spy.getGreetingText(user));
 	}
 }
