@@ -1,0 +1,47 @@
+/**
+ * 
+ */
+package es.sacyl.unit.demo.mockito.finalClass;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+import es.sacyl.demo.mockito.finalClass.AFinalClass;
+import es.sacyl.demo.mockito.finalClass.AStaticClass;
+
+/**
+ * @author isidromerayo
+ *
+ */
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ AFinalClass.class, AStaticClass.class })
+public class MockTest {
+	@Test
+	public void mockFinalClassTest() {
+		AFinalClass tested = PowerMockito.mock(AFinalClass.class);
+
+		final String testInput = "A test input";
+		final String mockedResult = "Mocked final echo result - " + testInput;
+		Mockito.when(tested.echoString(testInput)).thenReturn(mockedResult);
+
+		// Assert the mocked result is returned from method call
+		Assert.assertEquals(tested.echoString(testInput), mockedResult);
+	}
+
+	@Test
+	public void mockStaticClassTest() {
+		PowerMockito.mockStatic(AStaticClass.class);
+
+		final String testInput = "A test input";
+		final String mockedResult = "Mocked static echo result - " + testInput;
+		Mockito.when(AStaticClass.echoString(testInput)).thenReturn(mockedResult);
+
+		// Assert the mocked result is returned from method call
+		Assert.assertEquals(AStaticClass.echoString(testInput), mockedResult);
+	}
+}
