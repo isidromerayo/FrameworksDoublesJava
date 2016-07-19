@@ -11,7 +11,7 @@ import static org.powermock.api.easymock.PowerMock.verify;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.api.easymock.annotation.Mock;
+import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -26,14 +26,15 @@ import es.sacyl.demo.mockito.constructor.SimpleClass;
 @PrepareForTest(PowerMockConstructorExample.class)
 public class PowerMockConstructorExampleTest {
 
-	@Mock
-	private SimpleClass mockSimpleClass;
+	// @Mock
+	// private SimpleClass mockSimpleClass;
 
 	private PowerMockConstructorExample instance;
 
 	@Test
 	public void mockConstructor() throws Exception {
 		instance = new PowerMockConstructorExample();
+		SimpleClass mockSimpleClass = PowerMock.createMock(SimpleClass.class);
 		expectNew(SimpleClass.class).andReturn(mockSimpleClass);
 
 		expect(mockSimpleClass.getMeCurrentDateAsString()).andReturn("Mock Result");
