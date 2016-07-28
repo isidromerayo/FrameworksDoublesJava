@@ -35,6 +35,10 @@ public class AccountManagerStaticMethodExampleTest {
 		// Verify the account summary details are correct
 		assertEquals(accountSummary.getAccountHolder(), statement.getAccountSummary().getAccountHolder());
 		assertEquals(accountSummary.getCurrentBalance(), statement.getAccountSummary().getCurrentBalance());
+
+		// Verify AccountManager.getTransactions was called
+		PowerMockito.verifyStatic();
+		AccountManager.getTransactions(accountHolder);
 	}
 
 }
