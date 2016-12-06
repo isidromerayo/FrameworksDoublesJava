@@ -23,3 +23,8 @@ References
 https://dzone.com/refcardz/mockito
 
 http://www.mkyong.com/unittest/maven-and-junit-example/
+
+Status
+------
+
+[![Build Status](https://travis-ci.org/isidromerayo/FrameworksDoublesJava.svg?branch=master)](https://travis-ci.org/isidromerayo/FrameworksDoublesJava)
